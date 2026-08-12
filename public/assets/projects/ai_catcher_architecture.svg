@@ -1,0 +1,314 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" style="background-color: #f0f4f8; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eef3f9"/>
+      <stop offset="100%" stop-color="#e2e9f3"/>
+    </linearGradient>
+
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a5f"/>
+      <stop offset="100%" stop-color="#0f233d"/>
+    </linearGradient>
+
+    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f4f7fa"/>
+    </linearGradient>
+
+    <linearGradient id="blueBoxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+
+    <!-- Filters for shadow -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+
+    <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#16a34a" flood-opacity="0.3"/>
+    </filter>
+    
+    <filter id="glowRed" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#dc2626" flood-opacity="0.4"/>
+    </filter>
+
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowDark" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e3a5f"/>
+    </marker>
+  </defs>
+
+  <!-- Background with subtle circuit lines -->
+  <rect width="100%" height="100%" fill="url(#bgGrad)" />
+  <g stroke="#cbd5e1" stroke-width="1" opacity="0.4" fill="none">
+    <path d="M 50 100 H 1870 M 50 200 H 1870 M 50 300 H 1870 M 50 400 H 1870 M 50 500 H 1870 M 50 600 H 1870 M 50 700 H 1870 M 50 800 H 1870 M 50 900 H 1870 M 50 1000 H 1870"/>
+    <path d="M 100 50 V 1030 M 300 50 V 1030 M 500 50 V 1030 M 700 50 V 1030 M 900 50 V 1030 M 1100 50 V 1030 M 1300 50 V 1030 M 1500 50 V 1030 M 1700 50 V 1030"/>
+  </g>
+
+  <!-- ==================== COLUMN 1: VIDEO INGESTION & PIPELINE ==================== -->
+  <g transform="translate(60, 40)">
+    <!-- Main Section Header: VIDEO INGESTION -->
+    <g filter="url(#dropShadow)">
+      <rect x="0" y="0" width="480" height="60" rx="12" fill="url(#headerGrad)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="240" y="38" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="800" letter-spacing="2">VIDEO INGESTION</text>
+    </g>
+
+    <!-- Sub Boxes -->
+    <!-- IP Camera / RTSP / HTTP -->
+    <g filter="url(#dropShadow)">
+      <rect x="40" y="90" width="400" height="48" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="240" y="120" text-anchor="middle" fill="#0f172a" font-size="16" font-weight="700">IP Camera / RTSP / HTTP</text>
+    </g>
+
+    <!-- Arrow -->
+    <path d="M 240 138 V 162" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <!-- OpenCV + FFMPEG Capture -->
+    <g filter="url(#dropShadow)">
+      <rect x="40" y="165" width="400" height="48" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="240" y="195" text-anchor="middle" fill="#0f172a" font-size="16" font-weight="700">OpenCV + FFMPEG Capture</text>
+    </g>
+
+    <!-- Arrow -->
+    <path d="M 240 213 V 242" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <!-- PREPROCESSING ENGINE -->
+    <g filter="url(#dropShadow)">
+      <rect x="0" y="245" width="480" height="52" rx="10" fill="url(#headerGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="240" y="278" text-anchor="middle" fill="#ffffff" font-size="19" font-weight="800" letter-spacing="1.5">PREPROCESSING ENGINE</text>
+    </g>
+
+    <g filter="url(#dropShadow)">
+      <rect x="40" y="312" width="400" height="46" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="240" y="341" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">Rotate + Auto-ROI Crop</text>
+    </g>
+
+    <!-- Arrow -->
+    <path d="M 240 358 V 387" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <!-- DETECTION & TRACKING -->
+    <g filter="url(#dropShadow)">
+      <rect x="0" y="390" width="480" height="52" rx="10" fill="url(#headerGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="240" y="423" text-anchor="middle" fill="#ffffff" font-size="19" font-weight="800" letter-spacing="1.5">DETECTION &amp; TRACKING</text>
+    </g>
+
+    <!-- Split Boxes: YOLOv8 & Pose -->
+    <g filter="url(#dropShadow)">
+      <rect x="20" y="456" width="210" height="56" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="125" y="480" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="700">YOLOv8</text>
+      <text x="125" y="498" text-anchor="middle" fill="#475569" font-size="13" font-weight="600">Person Detection</text>
+    </g>
+
+    <g filter="url(#dropShadow)">
+      <rect x="250" y="456" width="210" height="56" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="355" y="489" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">Pose Keypoints</text>
+    </g>
+
+    <!-- Merge Arrows down to ByteTrack -->
+    <path d="M 125 512 V 532 H 240" stroke="#2563eb" stroke-width="2"/>
+    <path d="M 355 512 V 532 H 240" stroke="#2563eb" stroke-width="2"/>
+    <path d="M 240 532 V 547" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <g filter="url(#dropShadow)">
+      <rect x="80" y="550" width="320" height="48" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="240" y="579" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">ByteTrack Persistent ID</text>
+    </g>
+
+    <!-- Arrow -->
+    <path d="M 240 598 V 627" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <!-- SPATIAL ENGINE -->
+    <g filter="url(#dropShadow)">
+      <rect x="0" y="630" width="480" height="52" rx="10" fill="url(#headerGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="240" y="663" text-anchor="middle" fill="#ffffff" font-size="19" font-weight="800" letter-spacing="1.5">SPATIAL ENGINE</text>
+    </g>
+
+    <g filter="url(#dropShadow)">
+      <rect x="40" y="696" width="400" height="46" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="240" y="725" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">Polygon Boundary Check</text>
+    </g>
+
+    <!-- Branch Arrows to 3 Levels -->
+    <path d="M 240 742 V 760 H 80 V 772" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 240 742 V 772" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 240 742 V 760 H 400 V 772" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- L1 SAFE, L2 WARNING, L3 INTRUSION -->
+    <!-- L1 SAFE -->
+    <g filter="url(#glowGreen)">
+      <rect x="10" y="775" width="140" height="48" rx="8" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+      <text x="80" y="804" text-anchor="middle" fill="#15803d" font-size="15" font-weight="800">L1 SAFE</text>
+    </g>
+
+    <!-- L2 WARNING -->
+    <g filter="url(#dropShadow)">
+      <rect x="170" y="775" width="140" height="68" rx="8" fill="#fef9c3" stroke="#eab308" stroke-width="2"/>
+      <text x="240" y="800" text-anchor="middle" fill="#854d0e" font-size="14" font-weight="800">L2 WARNING</text>
+      <text x="240" y="824" text-anchor="middle" fill="#a16207" font-size="13" font-weight="700">Snapshot</text>
+    </g>
+
+    <!-- L3 INTRUSION -->
+    <g filter="url(#dropShadow)">
+      <rect x="330" y="775" width="140" height="68" rx="8" fill="#ffedd5" stroke="#f97316" stroke-width="2"/>
+      <text x="400" y="800" text-anchor="middle" fill="#9a3412" font-size="14" font-weight="800">L3 INTRUSION</text>
+      <text x="400" y="824" text-anchor="middle" fill="#c2410c" font-size="13" font-weight="700">Image + Video</text>
+    </g>
+  </g>
+
+  <!-- Connection Path from L2/L3 to Violence Engine -->
+  <path d="M 300 885 V 930 H 700 V 220 H 720" stroke="#1e3a5f" stroke-width="3" stroke-dasharray="6,4" fill="none" marker-end="url(#arrowDark)"/>
+  <path d="M 460 885 V 930 H 700" stroke="#1e3a5f" stroke-width="3" fill="none"/>
+
+  <!-- ==================== COLUMN 2: VIOLENCE ENGINE ==================== -->
+  <g transform="translate(730, 160)">
+    <!-- Header: VIOLENCE ENGINE -->
+    <g filter="url(#dropShadow)">
+      <rect x="0" y="0" width="460" height="60" rx="12" fill="url(#headerGrad)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="230" y="38" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="800" letter-spacing="2">VIOLENCE ENGINE</text>
+    </g>
+
+    <!-- Trigger Pill -->
+    <g filter="url(#dropShadow)">
+      <rect x="80" y="80" width="300" height="42" rx="21" fill="#f1f5f9" stroke="#0f172a" stroke-width="2"/>
+      <text x="230" y="106" text-anchor="middle" fill="#0f172a" font-size="16" font-weight="800">Trigger: ≥2 People / L3</text>
+    </g>
+
+    <path d="M 230 122 V 150" stroke="#2563eb" stroke-width="2.5"/>
+    <path d="M 230 150 H 60 V 170" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 230 150 V 170" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 230 150 H 400 V 170" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- 3 Sub Branches -->
+    <g filter="url(#dropShadow)">
+      <rect x="10" y="172" width="100" height="48" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="60" y="201" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="700">YOLO Class.</text>
+    </g>
+
+    <g filter="url(#dropShadow)">
+      <rect x="180" y="172" width="100" height="48" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="230" y="201" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="700">POSE</text>
+    </g>
+
+    <g filter="url(#dropShadow)">
+      <rect x="350" y="172" width="100" height="48" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="400" y="201" text-anchor="middle" fill="#0f172a" font-size="14" font-weight="700">MOTION</text>
+    </g>
+
+    <!-- Merge Paths -->
+    <path d="M 60 220 V 250 H 230" stroke="#2563eb" stroke-width="2"/>
+    <path d="M 230 220 V 250" stroke="#2563eb" stroke-width="2"/>
+    <path d="M 400 220 V 250 H 230" stroke="#2563eb" stroke-width="2"/>
+    <path d="M 230 250 V 275" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <!-- HIT ACCUMULATOR + DECAY ENGINE -->
+    <g filter="url(#dropShadow)">
+      <rect x="40" y="278" width="380" height="56" rx="10" fill="url(#boxGrad)" stroke="#1e293b" stroke-width="2"/>
+      <text x="230" y="302" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="800">HIT ACCUMULATOR +</text>
+      <text x="230" y="322" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="800">DECAY ENGINE</text>
+    </g>
+
+    <!-- Arrow -->
+    <path d="M 230 334 V 368" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <!-- L4 CRITICAL FIGHT / VIOLENCE -->
+    <g filter="url(#glowRed)">
+      <rect x="30" y="370" width="400" height="70" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="3"/>
+      <text x="230" y="402" text-anchor="middle" fill="#991b1b" font-size="18" font-weight="900" letter-spacing="1">L4 CRITICAL</text>
+      <text x="230" y="426" text-anchor="middle" fill="#b91c1c" font-size="16" font-weight="800">FIGHT / VIOLENCE</text>
+    </g>
+  </g>
+
+  <!-- Connection Path from Violence to Risk Engine -->
+  <path d="M 1160 565 H 1250 V 110 H 1280" stroke="#dc2626" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- ==================== COLUMN 3: RISK / EVENT ENGINE & DASHBOARD ==================== -->
+  <g transform="translate(1290, 40)">
+    <!-- Header: RISK / EVENT ENGINE -->
+    <g filter="url(#dropShadow)">
+      <rect x="0" y="0" width="560" height="60" rx="12" fill="url(#headerGrad)" stroke="#38bdf8" stroke-width="2"/>
+      <text x="280" y="38" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="800" letter-spacing="2">RISK / EVENT ENGINE</text>
+    </g>
+
+    <!-- 3 Action Boxes: BEEP, SIREN, EVIDENCE -->
+    <g filter="url(#dropShadow)">
+      <rect x="20" y="80" width="160" height="64" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+      <text x="100" y="106" text-anchor="middle" fill="#1e40af" font-size="16" font-weight="800">BEEP</text>
+      <text x="100" y="128" text-anchor="middle" fill="#1d4ed8" font-size="13" font-weight="700">Intrusion</text>
+    </g>
+
+    <g filter="url(#glowRed)">
+      <rect x="200" y="80" width="160" height="64" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+      <text x="280" y="106" text-anchor="middle" fill="#991b1b" font-size="16" font-weight="800">SIREN</text>
+      <text x="280" y="128" text-anchor="middle" fill="#b91c1c" font-size="13" font-weight="700">Critical</text>
+    </g>
+
+    <g filter="url(#dropShadow)">
+      <rect x="380" y="80" width="160" height="64" rx="8" fill="#f3e8ff" stroke="#9333ea" stroke-width="2"/>
+      <text x="460" y="106" text-anchor="middle" fill="#6b21a8" font-size="16" font-weight="800">EVIDENCE</text>
+      <text x="460" y="128" text-anchor="middle" fill="#7e22ce" font-size="13" font-weight="700">Image + Video</text>
+    </g>
+
+    <!-- Merge Arrow -->
+    <path d="M 100 144 V 170 H 280" stroke="#2563eb" stroke-width="2"/>
+    <path d="M 280 144 V 170" stroke="#dc2626" stroke-width="2"/>
+    <path d="M 460 144 V 170 H 280" stroke="#9333ea" stroke-width="2"/>
+    <path d="M 280 170 V 192" stroke="#1e293b" stroke-width="2.5" marker-end="url(#arrowDark)"/>
+
+    <!-- EVENT LOGGER -->
+    <g filter="url(#dropShadow)">
+      <rect x="80" y="195" width="400" height="48" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="280" y="224" text-anchor="middle" fill="#0f172a" font-size="16" font-weight="800">EVENT LOGGER</text>
+    </g>
+
+    <path d="M 280 243 V 272" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <!-- FLASK + NODE SERVER -->
+    <g filter="url(#dropShadow)">
+      <rect x="80" y="275" width="400" height="48" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="280" y="304" text-anchor="middle" fill="#0f172a" font-size="16" font-weight="800">FLASK + NODE SERVER</text>
+    </g>
+
+    <path d="M 280 323 V 352" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <!-- WEB DASHBOARD -->
+    <g filter="url(#dropShadow)">
+      <rect x="0" y="355" width="560" height="52" rx="10" fill="url(#headerGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="280" y="388" text-anchor="middle" fill="#ffffff" font-size="19" font-weight="800" letter-spacing="1.5">WEB DASHBOARD</text>
+    </g>
+
+    <g filter="url(#dropShadow)">
+      <rect x="40" y="420" width="230" height="48" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="155" y="449" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">LIVE STREAM</text>
+    </g>
+
+    <g filter="url(#dropShadow)">
+      <rect x="290" y="420" width="230" height="48" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="405" y="449" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">ADMIN USER</text>
+    </g>
+
+    <path d="M 280 468 V 497" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <!-- DYNAMIC CONFIG -->
+    <g filter="url(#dropShadow)">
+      <rect x="0" y="500" width="560" height="52" rx="10" fill="url(#headerGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="280" y="533" text-anchor="middle" fill="#ffffff" font-size="19" font-weight="800" letter-spacing="1.5">DYNAMIC CONFIG</text>
+    </g>
+
+    <g filter="url(#dropShadow)">
+      <rect x="80" y="565" width="400" height="48" rx="8" fill="url(#boxGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="280" y="594" text-anchor="middle" fill="#0f172a" font-size="15" font-weight="700">ROI + Sensitivity</text>
+    </g>
+
+    <path d="M 280 613 V 642" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <!-- HOT RELOAD -->
+    <g filter="url(#dropShadow)">
+      <rect x="120" y="645" width="320" height="48" rx="8" fill="url(#boxGrad)" stroke="#2563eb" stroke-width="2"/>
+      <text x="280" y="674" text-anchor="middle" fill="#1d4ed8" font-size="16" font-weight="800">HOT RELOAD</text>
+    </g>
+  </g>
+</svg>
