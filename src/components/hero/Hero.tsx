@@ -19,7 +19,6 @@ export const Hero: React.FC<HeroProps> = ({ candidate, onOpenEditor }) => {
   const handleResumeClick = (e: React.MouseEvent) => {
     e.preventDefault();
     const resumeUrl = candidate.resumeUrl || '/assets/resume/KUGAN_K_Resume.pdf';
-    window.open(resumeUrl, '_blank', 'noopener,noreferrer');
     const link = document.createElement('a');
     link.href = resumeUrl;
     link.download = 'KUGAN_K_Resume.pdf';

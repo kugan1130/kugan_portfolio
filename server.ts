@@ -52,10 +52,10 @@ app.post('/api/contact', async (req, res) => {
       </div>
     `;
 
-    const smtpHost = process.env.SMTP_HOST;
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS;
-    const smtpPort = parseInt(process.env.SMTP_PORT || '587', 10);
+    const smtpHost = (process.env.SMTP_HOST || '').trim();
+    const smtpUser = (process.env.SMTP_USER || '').trim();
+    const smtpPass = (process.env.SMTP_PASS || '').trim();
+    const smtpPort = parseInt((process.env.SMTP_PORT || '587').trim(), 10);
     const resendApiKey = process.env.RESEND_API_KEY;
     const sendgridApiKey = process.env.SENDGRID_API_KEY;
 
@@ -136,6 +136,8 @@ app.post('/api/contact', async (req, res) => {
     // 3. SMTP Transport
     if (smtpHost && smtpUser && smtpPass) {
       try {
+        console.log(`[Contact API] SMTP config: host=${smtpHost}, port=${smtpPort}, user=${smtpUser}, passLength=${smtpPass.length}, passExists=${!!smtpPass}`);
+
         const transporter = nodemailer.createTransport({
           host: smtpHost,
           port: smtpPort,
@@ -145,6 +147,10 @@ app.post('/api/contact', async (req, res) => {
             pass: smtpPass,
           },
         });
+
+        // Verify SMTP connection/auth before sending
+        await transporter.verify();
+        console.log('[Contact API] SMTP transporter.verify() succeeded — authentication OK');
 
         const info = await transporter.sendMail({
           from: `"${trimmedName} via Portfolio" <${smtpUser}>`,
@@ -195,6 +201,25 @@ app.post('/api/contact', async (req, res) => {
       error: err?.message || 'Unable to send message. Please try again.',
     });
   }
+});
+
+// Resume / document file download with correct MIME type headers
+// Registered BEFORE Vite SPA middleware to prevent index.html fallback
+app.get('/assets/resume/:filename', (req, res) => {
+  const filename = path.basename(req.params.filename); // prevent path traversal
+  const filePath = path.resolve(process.cwd(), 'public', 'assets', 'resume', filename);
+
+  res.sendFile(filePath, {
+    headers: {
+      'Content-Type': 'application/pdf',
+      'Content-Disposition': `attachment; filename="${filename}"`,
+    }
+  }, (err) => {
+    if (err && !res.headersSent) {
+      console.error('[Resume Download] File not found:', filename);
+      res.status(404).send('File not found');
+    }
+  });
 });
 
 async function startServer() {
