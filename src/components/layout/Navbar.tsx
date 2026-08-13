@@ -4,7 +4,6 @@ import { CandidateInfo } from '../../types';
 
 interface NavbarProps {
   candidate: CandidateInfo;
-  onOpenEditor: () => void;
   activeSection: string;
 }
 

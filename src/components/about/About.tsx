@@ -1,10 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { CandidateInfo } from '../../types';
-import { GraduationCap, Brain, Shield, Layers, Database, Sparkles, CheckCircle2, UserCheck, Camera } from 'lucide-react';
+import { GraduationCap, Brain, Shield, Layers, Database, Sparkles, CheckCircle2, UserCheck } from 'lucide-react';
 
 interface AboutProps {
   candidate: CandidateInfo;
-  onUpdatePhoto?: (photoUrl: string) => void;
 }
 
 export const About: React.FC<AboutProps> = ({ candidate }) => {

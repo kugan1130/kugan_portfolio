@@ -240,7 +240,7 @@ export const ProjectArchitectureModal: React.FC<ProjectArchitectureModalProps> =
           title: 'WEB DASHBOARD & DYNAMIC CONFIG',
           category: 'ui',
           tech: 'React Dashboard UI with Hot Reload',
-          purpose: 'Displays live feed, event history, and allows admin to reconfigure ROI zones on the fly.',
+          purpose: 'Displays live feed and event history; supports adjusting ROI zones.',
           inputs: ['catch-8']
         }
       ];

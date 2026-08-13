@@ -1,13 +1,12 @@
 import React from 'react';
 import { CandidateInfo } from '../../types';
-import { Github, Linkedin, Mail, Terminal, Edit, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Mail, Terminal, ArrowUp } from 'lucide-react';
 
 interface FooterProps {
   candidate: CandidateInfo;
-  onOpenEditor: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ candidate, onOpenEditor }) => {
+export const Footer: React.FC<FooterProps> = ({ candidate }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

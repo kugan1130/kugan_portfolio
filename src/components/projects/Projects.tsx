@@ -6,7 +6,6 @@ import { Github, ExternalLink, Cpu, Eye, ShieldAlert, ArrowRight, Layers, CheckC
 
 interface ProjectsProps {
   projects: ProjectItem[];
-  onUpdateProjects?: (updatedProjects: ProjectItem[]) => void;
 }
 
 export const Projects: React.FC<ProjectsProps> = ({ projects }) => {

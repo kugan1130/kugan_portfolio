@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PortfolioData } from './types';
-import { getPortfolioData, savePortfolioData } from './data/portfolioData';
-import { asyncLoadPortfolioData, asyncSavePortfolioData, asyncResetPortfolioData } from './lib/dbStorage';
+import { getPortfolioData } from './data/portfolioData';
+import { asyncLoadPortfolioData } from './lib/dbStorage';
 import { Background3D } from './components/3d/Background3D';
 import { Navbar } from './components/layout/Navbar';
 import { Hero } from './components/hero/Hero';
@@ -14,11 +14,9 @@ import { Timeline } from './components/timeline/Timeline';
 import { Experience } from './components/experience/Experience';
 import { Contact } from './components/contact/Contact';
 import { Footer } from './components/layout/Footer';
-import { DataEditorModal } from './components/editor/DataEditorModal';
 
 export default function App() {
   const [portfolioData, setPortfolioData] = useState<PortfolioData>(getPortfolioData());
-  const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('home');
 
   // Load from IndexedDB on initial mount
@@ -53,19 +51,6 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Save updated portfolio data to IndexedDB + localStorage
-  const handleSaveData = (newData: PortfolioData) => {
-    setPortfolioData(newData);
-    savePortfolioData(newData);
-    asyncSavePortfolioData(newData);
-  };
-
-  // Reset to default portfolio data
-  const handleResetData = async () => {
-    const defaultData = await asyncResetPortfolioData();
-    setPortfolioData(defaultData);
-  };
-
   return (
     <div className="min-h-screen bg-[#F8F9FA] text-[#111827] relative font-sans selection:bg-[#2563EB]/20 selection:text-[#2563EB] overflow-x-hidden">
       
@@ -80,7 +65,6 @@ export default function App() {
       {/* Main Single-Line Navigation Bar */}
       <Navbar
         candidate={portfolioData.candidate}
-        onOpenEditor={() => setIsEditorOpen(true)}
         activeSection={activeSection}
       />
 
@@ -89,14 +73,11 @@ export default function App() {
         {/* 1. Hero Section */}
         <Hero
           candidate={portfolioData.candidate}
-          onOpenEditor={() => setIsEditorOpen(true)}
-          onUpdatePhoto={(photoUrl) => handleSaveData({ ...portfolioData, candidate: { ...portfolioData.candidate, photoUrl } })}
         />
 
         {/* 2. About Section */}
         <About
           candidate={portfolioData.candidate}
-          onUpdatePhoto={(photoUrl) => handleSaveData({ ...portfolioData, candidate: { ...portfolioData.candidate, photoUrl } })}
         />
 
         {/* 3. Technical Skills & Capability Matrix */}
@@ -107,7 +88,6 @@ export default function App() {
         {/* 4. Featured Case Study Projects */}
         <Projects
           projects={portfolioData.projects}
-          onUpdateProjects={(updatedProjects) => handleSaveData({ ...portfolioData, projects: updatedProjects })}
         />
 
         {/* 5. System Architecture Interactive Viewer */}
@@ -116,8 +96,6 @@ export default function App() {
         {/* 6. Parallel 2-Column Certificates Gallery */}
         <CertificatesGallery
           certifications={portfolioData.certifications}
-          onOpenEditor={() => setIsEditorOpen(true)}
-          onUpdateCertificates={(certs) => handleSaveData({ ...portfolioData, certifications: certs })}
         />
 
         {/* 7. Unified Career & Certification Timeline */}
@@ -125,8 +103,6 @@ export default function App() {
           timeline={portfolioData.timeline}
           certifications={portfolioData.certifications}
           experiences={portfolioData.experiences}
-          onOpenEditor={() => setIsEditorOpen(true)}
-          onUpdateCertificates={(certs) => handleSaveData({ ...portfolioData, certifications: certs })}
         />
 
         {/* 7. Industry Experience & Internships */}
@@ -143,18 +119,7 @@ export default function App() {
       {/* Footer */}
       <Footer
         candidate={portfolioData.candidate}
-        onOpenEditor={() => setIsEditorOpen(true)}
       />
-
-      {/* Live Data & Certificate Editor Modal */}
-      {isEditorOpen && (
-        <DataEditorModal
-          data={portfolioData}
-          onSave={handleSaveData}
-          onReset={handleResetData}
-          onClose={() => setIsEditorOpen(false)}
-        />
-      )}
 
     </div>
   );

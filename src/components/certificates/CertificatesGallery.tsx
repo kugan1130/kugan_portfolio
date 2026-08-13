@@ -6,29 +6,15 @@ import { Award, Eye, Calendar, Building2 } from 'lucide-react';
 
 interface CertificatesGalleryProps {
   certifications: CertificationItem[];
-  onOpenEditor: () => void;
-  onUpdateCertificates?: (updatedCertificates: CertificationItem[]) => void;
 }
 
 export const CertificatesGallery: React.FC<CertificatesGalleryProps> = ({
   certifications,
-  onOpenEditor,
-  onUpdateCertificates,
 }) => {
   const [activeFilter, setActiveFilter] = useState<'all' | 'featured' | 'internship' | 'workshop' | 'exam'>('all');
   const [selectedCert, setSelectedCert] = useState<CertificationItem | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [imgErrorMap, setImgErrorMap] = useState<Record<string, boolean>>({});
-
-  const handleSingleCertUpdate = (updatedCert: CertificationItem) => {
-    if (onUpdateCertificates) {
-      const updatedList = certifications.map((c) =>
-        c.id === updatedCert.id ? updatedCert : c
-      );
-      onUpdateCertificates(updatedList);
-    }
-    setSelectedCert(updatedCert);
-  };
 
   const filteredCerts = certifications.filter((cert) => {
     if (searchQuery.trim()) {
@@ -222,7 +208,6 @@ export const CertificatesGallery: React.FC<CertificatesGalleryProps> = ({
         <CertificateViewerModal
           certification={selectedCert}
           onClose={() => setSelectedCert(null)}
-          onUpdateCertificate={handleSingleCertUpdate}
         />
       )}
     </section>

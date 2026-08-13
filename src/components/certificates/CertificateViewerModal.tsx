@@ -6,7 +6,6 @@ import { X, ZoomIn, ZoomOut, RotateCcw, ExternalLink, Award } from 'lucide-react
 interface CertificateViewerModalProps {
   certification: CertificationItem | null;
   onClose: () => void;
-  onUpdateCertificate?: (updatedCert: CertificationItem) => void;
 }
 
 export const CertificateViewerModal: React.FC<CertificateViewerModalProps> = ({ certification, onClose }) => {

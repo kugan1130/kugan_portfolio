@@ -231,7 +231,7 @@ export const initialPortfolioData: PortfolioData = {
       category: 'Surveillance & AI',
       featuredPositioning: 'Intrusion & Fight Detection Computer Vision Platform',
       problem: 'Traditional CCTV systems mainly record video and depend on continuous human monitoring, making it difficult to detect unauthorized entry and dangerous activities (like violence or fighting) in real time.',
-      solution: 'Developed an AI-powered surveillance system that detects and tracks people, validates intrusion using a virtual boundary and timer, classifies threat levels, detects fight activities, triggers audible/siren alarms, captures evidence, and displays events through a secure multi-admin web dashboard.',
+      solution: 'Developed an AI-powered surveillance system that detects and tracks people, validates intrusion using a virtual boundary and timer, classifies threat levels, detects fight activities, triggers audible/siren alarms, captures evidence, and displays events through a secure multi-user web dashboard.',
       architectureDiagramText: 'IP CAMERA / WEBCAM -> YOLOv8 Human Detection -> ID Tracking -> Polygon Boundary & Timer Check -> Violence/Fight Classifier -> Threat Alarm -> Evidence Capture -> Flask Dashboard',
       technologies: [
         'Python',
@@ -587,22 +587,3 @@ export function getPortfolioData(): PortfolioData {
   return initialPortfolioData;
 }
 
-export function savePortfolioData(data: PortfolioData): void {
-  try {
-    const serialized = JSON.stringify(data);
-    localStorage.setItem(STORAGE_KEYS[0], serialized);
-  } catch (err) {
-    console.warn('LocalStorage quota exceeded for direct save, handled via IndexedDB storage:', err);
-  }
-}
-
-export function resetPortfolioData(): PortfolioData {
-  try {
-    for (const key of STORAGE_KEYS) {
-      localStorage.removeItem(key);
-    }
-  } catch (err) {
-    console.error('Failed to reset portfolio data:', err);
-  }
-  return initialPortfolioData;
-}

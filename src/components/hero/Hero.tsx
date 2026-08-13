@@ -1,14 +1,12 @@
-import React, { useRef } from 'react';
-import { ArrowRight, Github, Linkedin, Mail, FileText, Cpu, Eye, Server, Sparkles, Terminal, CheckCircle2, Camera } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Github, Linkedin, Mail, FileText, Cpu, Eye, Server, Sparkles, Terminal, CheckCircle2 } from 'lucide-react';
 import { CandidateInfo } from '../../types';
 
 interface HeroProps {
   candidate: CandidateInfo;
-  onOpenEditor: () => void;
-  onUpdatePhoto?: (photoUrl: string) => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ candidate, onOpenEditor }) => {
+export const Hero: React.FC<HeroProps> = ({ candidate }) => {
   const handleScrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -40,9 +38,7 @@ export const Hero: React.FC<HeroProps> = ({ candidate, onOpenEditor }) => {
             
             {/* Avatar Frame */}
             <div 
-              onClick={onOpenEditor}
-              className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1 bg-white border-2 border-[#E5E7EB] shadow-2xl overflow-hidden cursor-pointer group/avatar"
-              title="Click to edit profile photo"
+              className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1 bg-white border-2 border-[#E5E7EB] shadow-2xl overflow-hidden group/avatar"
             >
               {candidate.photoUrl ? (
                 <img
@@ -61,12 +57,6 @@ export const Hero: React.FC<HeroProps> = ({ candidate, onOpenEditor }) => {
                   <span className="text-[10px] font-mono tracking-widest text-[#4B5563] mt-1">KUGAN K</span>
                 </div>
               )}
-
-              {/* Hover overlay hint */}
-              <div className="absolute inset-0 bg-slate-900/60 opacity-0 group-hover/avatar:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[10px] font-mono p-2 text-center">
-                <Camera className="w-5 h-5 mb-1 text-[#2563EB]" />
-                <span>EDIT PHOTO</span>
-              </div>
             </div>
           </div>
         </div>

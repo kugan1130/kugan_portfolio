@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
 import { TimelineEntry, CertificationItem, ExperienceItem } from '../../types';
-import { Calendar, Award, Briefcase, GraduationCap, CheckCircle2, Filter, Plus, ExternalLink, Sparkles, Trophy, Building2, Edit } from 'lucide-react';
+import { Calendar, Award, Briefcase, GraduationCap, CheckCircle2, Filter, ExternalLink, Sparkles, Trophy, Building2 } from 'lucide-react';
 
 interface TimelineProps {
   timeline: TimelineEntry[];
   certifications: CertificationItem[];
   experiences: ExperienceItem[];
-  onOpenEditor: () => void;
-  onUpdateCertificates?: (updatedCertificates: CertificationItem[]) => void;
 }
 
 export const Timeline: React.FC<TimelineProps> = ({
   timeline,
   certifications,
   experiences,
-  onOpenEditor,
-  onUpdateCertificates,
 }) => {
   const [activeFilter, setActiveFilter] = useState<'all' | 'experience' | 'certification' | 'education'>('all');
   const [imgErrorMap, setImgErrorMap] = useState<Record<string, boolean>>({});
@@ -74,7 +70,7 @@ export const Timeline: React.FC<TimelineProps> = ({
             Chronological progression combining AI/ML Developer internships, exam certifications, academic degree, and specialized training.
           </p>
 
-          {/* Filter & Edit Toolbar */}
+          {/* Filter Toolbar */}
           <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
             <div className="flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-2xl bg-white border border-[#E5E7EB] shadow-xs">
               <button
